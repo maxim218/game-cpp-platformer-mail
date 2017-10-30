@@ -29,11 +29,102 @@
    <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>30</y>
+      <x>-1000</x>
+      <y>-1000</y>
       <width>800</width>
       <height>600</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titleLabel">
+    <property name="geometry">
+     <rect>
+      <x>-1000</x>
+      <y>-1000</y>
+      <width>600</width>
+      <height>150</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="b1">
+    <property name="geometry">
+     <rect>
+      <x>-1000</x>
+      <y>-1000</y>
+      <width>700</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Начать игру</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="b2">
+    <property name="geometry">
+     <rect>
+      <x>-1000</x>
+      <y>-1000</y>
+      <width>700</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Мои рекорды</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="b3">
+    <property name="geometry">
+     <rect>
+      <x>-1000</x>
+      <y>-1000</y>
+      <width>700</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Описание игры</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="b4">
+    <property name="geometry">
+     <rect>
+      <x>-1000</x>
+      <y>-1000</y>
+      <width>700</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Выход</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="b5">
+    <property name="geometry">
+     <rect>
+      <x>-1000</x>
+      <y>-1000</y>
+      <width>470</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Пауза</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="b6">
+    <property name="geometry">
+     <rect>
+      <x>-1000</x>
+      <y>-1000</y>
+      <width>320</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Главное меню</string>
     </property>
    </widget>
   </widget>

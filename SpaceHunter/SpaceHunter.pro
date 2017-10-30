@@ -19,7 +19,9 @@ SOURCES += main.cpp\
     objectscreator.cpp \
     movementcontroller.cpp \
     matrixworker.cpp \
-    gamemanager.cpp
+    gamemanager.cpp \
+    styleworker.cpp \
+    positionmanager.cpp
 
 HEADERS  += mainwindow.h \
     render.h \
@@ -28,6 +30,11 @@ HEADERS  += mainwindow.h \
     physicalobject.h \
     movementcontroller.h \
     matrixworker.h \
-    gamemanager.h
+    gamemanager.h \
+    styleworker.h \
+    positionmanager.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    resourses.qrc

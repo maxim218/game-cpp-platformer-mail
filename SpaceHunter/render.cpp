@@ -58,5 +58,8 @@ void Render::drawRectange(int xx, int yy, int ww, int hh, int penWidth, int penC
 void Render::clearAll() {
     // очищаем содержимое сцены
     my_s->clear();
+    // рисуем прямоугольник
+    QBrush brush(Qt::white);
+    my_s->addRect(-100, -100, 1100, 1100, pen, brush);
 }
 

@@ -15,8 +15,10 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -27,6 +29,13 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QGraphicsView *graphicsView;
+    QLabel *titleLabel;
+    QPushButton *b1;
+    QPushButton *b2;
+    QPushButton *b3;
+    QPushButton *b4;
+    QPushButton *b5;
+    QPushButton *b6;
     QMenuBar *menuBar;
     QStatusBar *statusBar;
 
@@ -41,7 +50,28 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         graphicsView = new QGraphicsView(centralWidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(30, 30, 800, 600));
+        graphicsView->setGeometry(QRect(-1000, -1000, 800, 600));
+        titleLabel = new QLabel(centralWidget);
+        titleLabel->setObjectName(QStringLiteral("titleLabel"));
+        titleLabel->setGeometry(QRect(-1000, -1000, 600, 150));
+        b1 = new QPushButton(centralWidget);
+        b1->setObjectName(QStringLiteral("b1"));
+        b1->setGeometry(QRect(-1000, -1000, 700, 100));
+        b2 = new QPushButton(centralWidget);
+        b2->setObjectName(QStringLiteral("b2"));
+        b2->setGeometry(QRect(-1000, -1000, 700, 100));
+        b3 = new QPushButton(centralWidget);
+        b3->setObjectName(QStringLiteral("b3"));
+        b3->setGeometry(QRect(-1000, -1000, 700, 100));
+        b4 = new QPushButton(centralWidget);
+        b4->setObjectName(QStringLiteral("b4"));
+        b4->setGeometry(QRect(-1000, -1000, 700, 100));
+        b5 = new QPushButton(centralWidget);
+        b5->setObjectName(QStringLiteral("b5"));
+        b5->setGeometry(QRect(-1000, -1000, 470, 70));
+        b6 = new QPushButton(centralWidget);
+        b6->setObjectName(QStringLiteral("b6"));
+        b6->setGeometry(QRect(-1000, -1000, 320, 70));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -59,6 +89,13 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        titleLabel->setText(QString());
+        b1->setText(QApplication::translate("MainWindow", "\320\235\320\260\321\207\320\260\321\202\321\214 \320\270\320\263\321\200\321\203", 0));
+        b2->setText(QApplication::translate("MainWindow", "\320\234\320\276\320\270 \321\200\320\265\320\272\320\276\321\200\320\264\321\213", 0));
+        b3->setText(QApplication::translate("MainWindow", "\320\236\320\277\320\270\321\201\320\260\320\275\320\270\320\265 \320\270\320\263\321\200\321\213", 0));
+        b4->setText(QApplication::translate("MainWindow", "\320\222\321\213\321\205\320\276\320\264", 0));
+        b5->setText(QApplication::translate("MainWindow", "\320\237\320\260\321\203\320\267\320\260", 0));
+        b6->setText(QApplication::translate("MainWindow", "\320\223\320\273\320\260\320\262\320\275\320\276\320\265 \320\274\320\265\320\275\321\216", 0));
     } // retranslateUi
 
 };

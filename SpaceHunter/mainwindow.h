@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTimer>
+#include <QDebug>
 
 #include "render.h"
 #include "worldbuilder.h"
@@ -10,6 +11,10 @@
 #include "movementcontroller.h"
 #include "physicalobject.h"
 #include "gamemanager.h"
+#include "styleworker.h"
+#include "positionmanager.h"
+#include <QInputDialog>
+#include "QKeyEvent"
 
 namespace Ui {
 class MainWindow;
@@ -22,9 +27,20 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+     void keyDownEvent(QKeyEvent *event);
+     void keyUpEvent(QKeyEvent *event);
 
 public slots:
      void repeatingFunction();
+
+private slots:
+     void on_b1_clicked();
+
+     void on_b4_clicked();
+
+     void on_b5_clicked();
+
+     void on_b6_clicked();
 
 private:
     Ui::MainWindow *ui;
