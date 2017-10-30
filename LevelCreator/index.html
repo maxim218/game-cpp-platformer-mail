@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>LevelCreator</title>
+    <style>
+        body {
+            padding: 25px;
+        }
+
+        #canvasBox {
+            overflow-x: scroll;
+            overflow-y: scroll;
+            width: 1600px;
+            height: 800px;
+        }
+
+        #can {
+            position: absolute;
+            margin-left: 0px;
+            margin-top: 0px;
+            padding: 0;
+        }
+
+        #canvasBox {
+            position: absolute;
+            margin-left: 0px;
+            margin-top: 0px;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>LevelCreator</h1>
+<hr>
+
+<button onclick = "eee(this.innerHTML);">wall</button>
+<button onclick = "eee(this.innerHTML);">e2</button>
+<button onclick = "eee(this.innerHTML);">e3</button>
+<button onclick = "eee(this.innerHTML);">e4</button>
+<button onclick = "eee(this.innerHTML);">e5</button>
+<button onclick = "eee(this.innerHTML);">e6</button>
+<button onclick = "eee(this.innerHTML);">e7</button>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span id = 'typeContent'>wall</span>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button onclick = "getResult()">Готово</button>
+
+<br><br><br>
+
+<textarea id = 't1'></textarea>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<textarea id = 't2'></textarea>
+
+<br>
+<br>
+
+<div id = "canvasBox">
+    <canvas width = '4000' height = '2000' id='can'></canvas>
+</div>
+
+<script src = 'code.js'></script>
+
+</body>
+</html>
