@@ -13,7 +13,7 @@ class ObjectsCreator
         // указатель на объект для рисования
         Render * renderObject;
         // метод для отрисовки одного физического объекта
-        void printOneObject(physicalObject * q);
+        void printOneObject(physicalObject * q, int dx, int dy);
 
     public:
         // конструктор для инициализации объекта для рисования, инициализации указателей на физические объекты и создания начального элемента списка
@@ -23,7 +23,7 @@ class ObjectsCreator
         // метод для добавления физического объекта в конец списка
         physicalObject * addPhysicalObject(int xx, int yy, int ww, int hh, int acceleration, int speedX, int speedY);
         // метод для вывода всех физических объектов на экран
-        void printAllObjects();
+        void printAllObjects(int dx, int dy);
         // метод для получения указателя на список, содержащий физические объекты
         physicalObject * getPointerToList();
 };

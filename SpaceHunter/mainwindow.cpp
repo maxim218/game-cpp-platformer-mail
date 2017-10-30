@@ -8,6 +8,8 @@ QTimer * p = NULL;
 GameManager * gameManager = NULL;
 // идёт ли сейчас игра или нет
 bool game = false;
+// пауза в игре
+bool pause = false;
 
 // переменные для контроля жвижения персонажа
 bool w,a,d;
@@ -18,8 +20,14 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // ставим фокус на кнопке начала игры
+    ui->b1->setFocus();
+
     // говорим, что игра НЕ началась
     game = false;
+
+    // говорим, что паузы нет
+    pause = false;
 
     // говорим, что персонаж никуда не двигается
     w = false;
@@ -68,8 +76,18 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::repeatingFunction()
 {
+    // функция, которая вызывается в цикле
+
+    // если идёт игра
     if(game == true) {
-        if(gameManager != NULL) gameManager->gameProcess(w, a, d);
+        // если нет паузы
+        if(pause == false) {
+            // если контроллер игры существует
+            if(gameManager != NULL) {
+                // выполняем очередной шаг игры
+                gameManager->gameProcess(w, a, d);
+            }
+        }
     }
 }
 
@@ -88,6 +106,11 @@ void MainWindow::on_b1_clicked()
     w = false;
     a = false;
     d = false;
+    // говорим, что паузы нет
+    pause = false;
+
+    // ставим фокус на элемент холст
+    ui->graphicsView->setFocus();
 
     PositionManager positionManager;
     // прячем кнопки главного меню
@@ -116,7 +139,10 @@ void MainWindow::on_b4_clicked()
 
 void MainWindow::on_b5_clicked()
 {
-    // пауза
+    // работа с паузой
+    qDebug() << "Пауза";
+    // меняем режим на противоположный
+    pause = !pause;
 }
 
 void MainWindow::on_b6_clicked()
@@ -129,15 +155,18 @@ void MainWindow::on_b6_clicked()
     game = false;
     // удаляем объект контроля игры
     delete gameManager;
+    // говорим, что паузы нет
+    pause = false;
+
+    // ставим фокус на кнопке начала игры
+    ui->b1->setFocus();
 
     PositionManager positionManager;
-
     // прячем холст
     positionManager.hideElement(ui->graphicsView);
     // прячем игровые кнопки
     positionManager.hideElement(ui->b5);
     positionManager.hideElement(ui->b6);
-
     // показываем на экране главное меню
     // показываем картинку
     positionManager.setPosition(ui->titleLabel, 30, 30);
@@ -149,18 +178,17 @@ void MainWindow::on_b6_clicked()
 }
 
 
-// событие нажатия на клавишу
-void MainWindow::keyDownEvent(QKeyEvent *event)
+void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    if(event->key() == Qt::Key_W) w = true;
-    if(event->key() == Qt::Key_A) a = true;
-    if(event->key() == Qt::Key_D) d = true;
-}
+    // событие при нажатии клавиши
 
-// событие отпускания клавиши
-void MainWindow::keyUpEvent(QKeyEvent *event)
-{
-    if(event->key() == Qt::Key_W) w = false;
-    if(event->key() == Qt::Key_A) a = false;
-    if(event->key() == Qt::Key_D) d = false;
+    // говорим, что ни одна клавиша не нажата
+    a = false;
+    w = false;
+    d = false;
+
+    // ищем нажатую клавишу
+    if(event->key() == Qt::Key_A) a = true;
+    if(event->key() == Qt::Key_W) w = true;
+    if(event->key() == Qt::Key_D) d = true;
 }

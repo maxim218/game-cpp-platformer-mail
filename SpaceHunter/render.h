@@ -17,6 +17,8 @@ class Render
         void setPenProperties(int penWidth, int penColorNumber);
         // метод для рисования линии по координатам двух точек
         void drawLine(int x1, int y1, int x2, int y2);
+        // сдвиги по двум осям
+        int dx, dy;
 
     public:
         // конструктор, в котором инициализируются свойства холста
@@ -27,6 +29,8 @@ class Render
         void drawRectange(int xx, int yy, int ww, int hh, int penWidth, int penColorNumber);
         // метод для очистки содержимого холста
         void clearAll();
+        // задать сдвиги по осям
+        void setDelta(int dxx, int dyy);
 };
 
 #endif // RENDER_H

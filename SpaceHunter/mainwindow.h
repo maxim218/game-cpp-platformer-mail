@@ -27,8 +27,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-     void keyDownEvent(QKeyEvent *event);
-     void keyUpEvent(QKeyEvent *event);
+    void keyPressEvent(QKeyEvent *event);
 
 public slots:
      void repeatingFunction();

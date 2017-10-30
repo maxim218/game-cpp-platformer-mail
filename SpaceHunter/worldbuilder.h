@@ -24,7 +24,7 @@ class WorldBuilder
         // деструктор для удаления матрицы
         ~WorldBuilder();
         // метод для вывода карты на экран
-        void printMap();
+        void printMap(int dx, int dy);
         // метод для создания непроходимой стены
         void createWall(int i, int j);
         // метод для передачи данных о карте объекту, отвечающему за движение

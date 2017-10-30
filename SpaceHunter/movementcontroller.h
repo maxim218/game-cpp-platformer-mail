@@ -27,6 +27,8 @@ class MovementController
         void moveAllObjects();
         // матрица для хранения информации о карте
         MatrixWorker * m;
+        // реализация прыжка
+        void jump(physicalObject * q, int speedYYY);
 };
 
 #endif // MOVEMENTCONTROLLER_H

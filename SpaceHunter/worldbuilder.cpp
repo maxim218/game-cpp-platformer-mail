@@ -25,7 +25,9 @@ WorldBuilder::~WorldBuilder() {
 }
 
 // метод для вывода карты на экран
-void WorldBuilder::printMap(){
+void WorldBuilder::printMap(int dx, int dy){
+    // задаём сдвиг
+    renderObject->setDelta(dx, dy);
     // очищаем содержимое холста
     renderObject->clearAll();
     // пробегаемся по все карте

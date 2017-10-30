@@ -64,7 +64,28 @@ void MovementController::moveOneObject(physicalObject * q) {
                 q->speedY = 0;
                 q->yy = yPosFuture * size - 1;
             }
+
+            if(q->speedY < 0){
+                int yPosFutureSecond = int( (q->yy + q->speedY - q->hh) / size );
+                if(m->getValue(yPosFutureSecond, xPosNow) == 1) {
+                    q->speedY = 0;
+                    q->yy = yPosFutureSecond * size + size + q->hh;
+                }
+            }
         }
+    }
+}
+
+// реализация прыжка
+void MovementController::jump(physicalObject * q, int speedYYY) {
+    // получаем координаты клетки под персонажем
+    int xPos = int( q->xx / size );
+    int yPos = int( (q->yy + 18) / size );
+    // если под персонажем стена
+    if(m->getValue(yPos, xPos) == 1){
+        // делаем прыжок
+        q->speedY = speedYYY;
+        q->yy -= 4;
     }
 }
 

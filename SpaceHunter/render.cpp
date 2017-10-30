@@ -11,6 +11,9 @@ Render::Render(QGraphicsView * graphicsView, int elementWidth, int elementHeight
     graphicsView->setScene(my_s);
     // задаём размер холста
     my_s->setSceneRect(0, 0, elementWidth, elementHeight);
+    // инициализируем сдвиги
+    dx = 0;
+    dy = 0;
 }
 
 // деструктор, в котором удаляется динамическая сцена
@@ -40,7 +43,7 @@ void Render::setPenProperties(int penWidth, int penColorNumber) {
 // метод для рисования линии по координатам двух точек
 void Render::drawLine(int x1, int y1, int x2, int y2) {
     // рисуем линию
-    my_s->addLine(x1, y1, x2, y2, pen);
+    my_s->addLine(x1 - dx, y1 - dy, x2 - dx, y2 - dy, pen);
 }
 
 // метод для рисования прямоугольника по его опорной точке, ширине и высоте
@@ -61,5 +64,11 @@ void Render::clearAll() {
     // рисуем прямоугольник
     QBrush brush(Qt::white);
     my_s->addRect(-100, -100, 1100, 1100, pen, brush);
+}
+
+// задать сдвиги по осям
+void Render::setDelta(int dxx, int dyy) {
+    dx = dxx;
+    dy = dyy;
 }
 

@@ -6,6 +6,7 @@
 #include "objectscreator.h"
 #include "movementcontroller.h"
 #include "physicalobject.h"
+#include "QKeyEvent"
 
 class GameManager
 {
@@ -20,11 +21,13 @@ class GameManager
 
         physicalObject * hero;
 
+        void buildPerimetrWalls();
+
     public:
         void startGame(QGraphicsView * graphicsView);
         void stopGame();
         void createDemoLevel();
-        void gameProcess(bool w, bool a, bool d);
+        void gameProcess(bool &w, bool &a, bool &d);
         void addWall(int i, int j);
         physicalObject * addObject(int xx, int yy, int ww, int hh, int acceleration, int speedX, int speedY);
         void buildFirstLevel();

@@ -57,7 +57,9 @@ physicalObject * ObjectsCreator::addPhysicalObject(int xx, int yy, int ww, int h
 }
 
 // метод для вывода одного физического объекта на экран
-void ObjectsCreator::printOneObject(physicalObject * q) {
+void ObjectsCreator::printOneObject(physicalObject * q, int dx, int dy) {
+    // задаём сдвиг
+    renderObject->setDelta(dx, dy);
     // получаем свойства физического объекта
     int xx = q->xx;
     int yy = q->yy;
@@ -71,12 +73,12 @@ void ObjectsCreator::printOneObject(physicalObject * q) {
 }
 
 // метод для вывода всех физических объектов в списке на экран
-void ObjectsCreator::printAllObjects() {
+void ObjectsCreator::printAllObjects(int dx, int dy) {
     q = first;
     // пробегаемся по всем элементам списка
     while(q != NULL) {
         // выводим на экран физический объект
-        printOneObject(q);
+        printOneObject(q, dx, dy);
         // переходим на следующий элемент списка
         q = q->next;
     }
