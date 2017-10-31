@@ -10,6 +10,8 @@ GameManager * gameManager = NULL;
 bool game = false;
 // пауза в игре
 bool pause = false;
+// уровень игры
+int gameLevel = 1;
 
 // переменные для контроля жвижения персонажа
 bool w,a,d;
@@ -19,6 +21,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    // уровень игры
+    gameLevel = 1;
 
     // ставим фокус на кнопке начала игры
     ui->b1->setFocus();
@@ -85,7 +90,25 @@ void MainWindow::repeatingFunction()
             // если контроллер игры существует
             if(gameManager != NULL) {
                 // выполняем очередной шаг игры
-                gameManager->gameProcess(w, a, d);
+                int gameResult = gameManager->gameProcess(w, a, d);
+
+                // если игра закончилась проигрышем
+                if(gameResult == -1) {
+                    // конец игры
+                    gameOverFunction();
+                    // уровень игры
+                    gameLevel = 1;
+                }
+
+                // если игрок прошёл уровень
+                if(gameResult == 1) {
+                    // конец игры
+                    gameOverFunction();
+                    // уровень игры
+                    gameLevel++;
+                    // начало игры
+                    startGameFunction(gameLevel);
+                }
             }
         }
     }
@@ -96,8 +119,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_b1_clicked()
-{
+void MainWindow::startGameFunction(int level) {
     // начало игры
     qDebug() << "Запуск игры";
     // говорим, что игра началась
@@ -128,7 +150,15 @@ void MainWindow::on_b1_clicked()
     positionManager.setPosition(ui->b6, 510, 650);
 
     gameManager = new GameManager();
-    gameManager->startGame(ui->graphicsView);
+    gameManager->startGame(ui->graphicsView, level);
+}
+
+void MainWindow::on_b1_clicked()
+{
+    // начало игры
+    startGameFunction(1);
+    // уровень игры
+    gameLevel = 1;
 }
 
 void MainWindow::on_b4_clicked()
@@ -147,6 +177,13 @@ void MainWindow::on_b5_clicked()
 
 void MainWindow::on_b6_clicked()
 {
+    // конец игры
+    gameOverFunction();
+    // уровень игры
+    gameLevel = 1;
+}
+
+void MainWindow::gameOverFunction() {
     // конец игры
     qDebug() << "Конец игры";
     // завершаем игры
@@ -221,7 +258,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
                     ym -= 30;
 
                     // вызываем метод стрельбы
-                    gameManager->fire(xm, ym);
+                    gameManager->fire(xm, ym + 20);
                 }
             }
         }

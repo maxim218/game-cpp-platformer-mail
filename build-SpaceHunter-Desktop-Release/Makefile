@@ -367,9 +367,11 @@ compiler_rcc_make_all: qrc_resourses.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resourses.cpp
 qrc_resourses.cpp: ../SpaceHunter/resourses.qrc \
+		../SpaceHunter/gameFonOK.jpg \
 		../SpaceHunter/space.jpg \
 		../SpaceHunter/metal.jpeg \
-		../SpaceHunter/titlePicture.png
+		../SpaceHunter/titlePicture.png \
+		../SpaceHunter/box.jpg
 	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name resourses ../SpaceHunter/resourses.qrc -o qrc_resourses.cpp
 
 compiler_moc_header_make_all: moc_mainwindow.cpp
@@ -383,6 +385,7 @@ moc_mainwindow.cpp: ../SpaceHunter/render.h \
 		../SpaceHunter/objectscreator.h \
 		../SpaceHunter/gamemanager.h \
 		../SpaceHunter/maploader.h \
+		../SpaceHunter/thingloader.h \
 		../SpaceHunter/styleworker.h \
 		../SpaceHunter/positionmanager.h \
 		../SpaceHunter/mainwindow.h
@@ -415,6 +418,7 @@ main.o: ../SpaceHunter/main.cpp ../SpaceHunter/mainwindow.h \
 		../SpaceHunter/objectscreator.h \
 		../SpaceHunter/gamemanager.h \
 		../SpaceHunter/maploader.h \
+		../SpaceHunter/thingloader.h \
 		../SpaceHunter/styleworker.h \
 		../SpaceHunter/positionmanager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../SpaceHunter/main.cpp
@@ -428,6 +432,7 @@ mainwindow.o: ../SpaceHunter/mainwindow.cpp ../SpaceHunter/mainwindow.h \
 		../SpaceHunter/objectscreator.h \
 		../SpaceHunter/gamemanager.h \
 		../SpaceHunter/maploader.h \
+		../SpaceHunter/thingloader.h \
 		../SpaceHunter/styleworker.h \
 		../SpaceHunter/positionmanager.h \
 		ui_mainwindow.h
@@ -463,7 +468,8 @@ gamemanager.o: ../SpaceHunter/gamemanager.cpp ../SpaceHunter/gamemanager.h \
 		../SpaceHunter/physicalobject.h \
 		../SpaceHunter/matrixworker.h \
 		../SpaceHunter/objectscreator.h \
-		../SpaceHunter/maploader.h
+		../SpaceHunter/maploader.h \
+		../SpaceHunter/thingloader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gamemanager.o ../SpaceHunter/gamemanager.cpp
 
 styleworker.o: ../SpaceHunter/styleworker.cpp ../SpaceHunter/styleworker.h

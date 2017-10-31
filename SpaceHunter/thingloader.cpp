@@ -38,7 +38,12 @@ ThingLoader::ThingLoader(QString fileName, ObjectsCreator * objectsCreator) {
                 case 2:
                     n = s.toInt();
                     // если все три позиции считаны, то добавляем объект в игру
-                    objectsCreator->addPhysicalObject(j * 20 + 20, i * 20 + 40, 40, 40, 0, 0, 0);
+                    QString type = "";
+                    type.setNum(n);
+                    type = "thing" + type;
+                    physicalObject * thing = objectsCreator->addPhysicalObject(j * 20 + 20, i * 20 + 40, 40, 40, 1, 0, 0, type);
+                    thing->nowLiveTime = 0;
+                    thing->maxLiveTime = n;
                     break;
             }
         }

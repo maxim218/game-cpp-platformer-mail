@@ -26,7 +26,7 @@ struct physicalObject {
     // текущее время жизни
     int nowLiveTime;
 
-    //метка на удаление
+    // метка на удаление
     bool deleted;
 
     // адресная часть

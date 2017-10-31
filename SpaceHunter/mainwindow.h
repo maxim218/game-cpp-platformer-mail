@@ -30,6 +30,8 @@ public:
     ~MainWindow();
     void keyPressEvent(QKeyEvent *event);
     void mousePressEvent(QMouseEvent *event);
+    void gameOverFunction();
+    void startGameFunction(int level);
 
 public slots:
      void repeatingFunction();

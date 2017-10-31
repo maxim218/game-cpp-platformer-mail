@@ -3,5 +3,7 @@
         <file>titlePicture.png</file>
         <file>metal.jpeg</file>
         <file>space.jpg</file>
+        <file>gameFonOK.jpg</file>
+        <file>box.jpg</file>
     </qresource>
 </RCC>

@@ -22,7 +22,7 @@ class ObjectsCreator
         // деструктор для удаления динамического списка
         ~ObjectsCreator();
         // метод для добавления физического объекта в конец списка
-        physicalObject * addPhysicalObject(int xx, int yy, int ww, int hh, int acceleration, int speedX, int speedY);
+        physicalObject * addPhysicalObject(int xx, int yy, int ww, int hh, int acceleration, int speedX, int speedY, QString type);
         // метод для вывода всех физических объектов на экран
         void printAllObjects(int dx, int dy);
         // метод для получения указателя на список, содержащий физические объекты

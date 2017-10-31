@@ -10,7 +10,7 @@ ObjectsCreator::ObjectsCreator(Render * renderObjectParam){
     q = NULL;
     p = NULL;
     // создаём первый элемент списка (он не принимает участия в действиях на сцене)
-    first = addPhysicalObject(0, 0, 0, 0, 0, 0, 0);
+    first = addPhysicalObject(0, 0, 0, 0, 0, 0, 0, "firstElementOfTheList");
 }
 
 // деструктор для удаления динамического списка физических объектов
@@ -85,7 +85,7 @@ void ObjectsCreator::deleteMarkedObjects() {
         // получаем i-ый элемент массива
         physicalObject obj = arr[i];
         // добавляем элемент в список
-        physicalObject * element = addPhysicalObject(obj.xx, obj.yy, obj.ww, obj.hh, obj.acceleration, obj.speedX, obj.speedY);
+        physicalObject * element = addPhysicalObject(obj.xx, obj.yy, obj.ww, obj.hh, obj.acceleration, obj.speedX, obj.speedY, obj.type);
         // задаём дополнительные свойства элемента
         element->type = obj.type;
         element->maxLiveTime = obj.maxLiveTime;
@@ -108,7 +108,7 @@ void ObjectsCreator::deleteMarkedObjects() {
 }
 
 // метод для добавления физических объектов в конец списка
-physicalObject * ObjectsCreator::addPhysicalObject(int xx, int yy, int ww, int hh, int acceleration, int speedX, int speedY) {
+physicalObject * ObjectsCreator::addPhysicalObject(int xx, int yy, int ww, int hh, int acceleration, int speedX, int speedY, QString type) {
     // создаём новый физический объект
     q = new physicalObject;
     // задаём свойства физического объекта
@@ -120,6 +120,7 @@ physicalObject * ObjectsCreator::addPhysicalObject(int xx, int yy, int ww, int h
     q->speedX = speedX;
     q->speedY = speedY;
     q->deleted = false;
+    q->type = type;
     // если начального элемента списка не существует
     if(first == NULL){
         // создаём начальный элемент
@@ -148,7 +149,36 @@ void ObjectsCreator::printOneObject(physicalObject * q, int dx, int dy) {
     // если объект не начальный (начальный объект не принимает участия в действиях на сцене)
     if(q != first){
         // выводим объект на экран
-        renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 3);
+
+        // если объект - герой
+        if(q->type == "hero") {
+        renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 2);
+        }
+
+        // если объект - пуля
+        if(q->type == "bullet") {
+            renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 3);
+        }
+
+        // если объект - монстр 2
+        if(q->type == "thing2") {
+            renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 4);
+        }
+
+        // если объект - монстр 3
+        if(q->type == "thing3") {
+            renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 5);
+        }
+
+        // если объект - монстр 4
+        if(q->type == "thing4") {
+            renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 6);
+        }
+
+        // если объект - конец уровня
+        if(q->type == "thing7") {
+            renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 9);
+        }
     }
 }
 

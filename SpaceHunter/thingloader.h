@@ -4,6 +4,7 @@
 #include <objectscreator.h>
 #include "QFile"
 #include "QTextStream"
+#include "physicalobject.h"
 
 // класс для загрузки положения монстров и других объектов из файла
 class ThingLoader
