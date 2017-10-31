@@ -7,6 +7,9 @@
 #include "movementcontroller.h"
 #include "physicalobject.h"
 #include "QKeyEvent"
+#include "maploader.h"
+#include <math.h>
+#include "thingloader.h"
 
 class GameManager
 {
@@ -31,6 +34,7 @@ class GameManager
         void addWall(int i, int j);
         physicalObject * addObject(int xx, int yy, int ww, int hh, int acceleration, int speedX, int speedY);
         void buildFirstLevel();
+        void fire(int xxx, int yyy);
 };
 
 #endif // GAMEMANAGER_H

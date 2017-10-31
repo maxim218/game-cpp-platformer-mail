@@ -15,6 +15,7 @@
 #include "positionmanager.h"
 #include <QInputDialog>
 #include "QKeyEvent"
+#include <QMouseEvent>
 
 namespace Ui {
 class MainWindow;
@@ -28,6 +29,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void keyPressEvent(QKeyEvent *event);
+    void mousePressEvent(QMouseEvent *event);
 
 public slots:
      void repeatingFunction();

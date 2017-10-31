@@ -23,7 +23,7 @@ void GameManager::addWall(int i, int j) {
     worldBuilder->createWall(i, j);
 }
 
-physicalObject *  GameManager::addObject(int xx, int yy, int ww, int hh, int acceleration, int speedX, int speedY) {
+physicalObject * GameManager::addObject(int xx, int yy, int ww, int hh, int acceleration, int speedX, int speedY) {
     return objectsCreator->addPhysicalObject(xx, yy, ww, hh, acceleration, speedX, speedY);
 }
 
@@ -40,6 +40,38 @@ void GameManager::gameProcess(bool &w, bool &a, bool &d){
     movementController->moveAllObjects();
     worldBuilder->printMap(dx, dy);
     objectsCreator->printAllObjects(dx, dy);
+
+    physicalObject * q = hero;
+
+    while(q != NULL) {
+        if(q->type == "bullet") {
+             q->nowLiveTime += 1;
+             if(q->nowLiveTime >= q->maxLiveTime) {
+                q->deleted = true;
+             }
+        }
+        q = q->next;
+    }
+
+    objectsCreator->deleteMarkedObjects();
+}
+
+void GameManager::fire(int xxx, int yyy) {
+    int dx = -400 + hero->xx;
+    int dy = -320 + hero->yy;
+    physicalObject * bullet = addObject(hero->xx, hero->yy - 20 + 5, 10, 10, 0, 0, 0);
+
+    bullet->type = "bullet";
+    bullet->nowLiveTime = 0;
+    bullet->maxLiveTime = 80;
+
+    float cat_1 = xxx + dx - hero->xx;
+    float cat_2 = yyy + dy - hero->yy;
+    float gipot = sqrt(cat_1 * cat_1 + cat_2 * cat_2);
+
+    int speedBullet = 10;
+    bullet->speedX = speedBullet * cat_1 / gipot;
+    bullet->speedY = speedBullet * cat_2 / gipot;
 }
 
 void GameManager::stopGame() {
@@ -63,6 +95,11 @@ void GameManager::buildPerimetrWalls() {
 
 void GameManager::buildFirstLevel() {
     buildPerimetrWalls();
+    MapLoader mapLoader("map1", worldBuilder);
+
     hero = addObject(400, 320, 40, 40, 1, 0, 0);
+    hero->type = "hero";
+
+    ThingLoader thingLoader("thing1", objectsCreator);
 }
 

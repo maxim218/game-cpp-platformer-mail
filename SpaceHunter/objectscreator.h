@@ -3,6 +3,7 @@
 
 #include "render.h"
 #include "physicalobject.h"
+#include <QDebug>
 
 // класс для создания физических объектов
 class ObjectsCreator
@@ -26,6 +27,8 @@ class ObjectsCreator
         void printAllObjects(int dx, int dy);
         // метод для получения указателя на список, содержащий физические объекты
         physicalObject * getPointerToList();
+        // удаление объектов, помеченных на удаление
+        void deleteMarkedObjects();
 };
 
 #endif // OBJECTSCREATOR_H

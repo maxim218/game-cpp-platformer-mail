@@ -57,7 +57,9 @@ SOURCES       = ../SpaceHunter/main.cpp \
 		../SpaceHunter/matrixworker.cpp \
 		../SpaceHunter/gamemanager.cpp \
 		../SpaceHunter/styleworker.cpp \
-		../SpaceHunter/positionmanager.cpp qrc_resourses.cpp \
+		../SpaceHunter/positionmanager.cpp \
+		../SpaceHunter/maploader.cpp \
+		../SpaceHunter/thingloader.cpp qrc_resourses.cpp \
 		moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
@@ -69,6 +71,8 @@ OBJECTS       = main.o \
 		gamemanager.o \
 		styleworker.o \
 		positionmanager.o \
+		maploader.o \
+		thingloader.o \
 		qrc_resourses.o \
 		moc_mainwindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -142,7 +146,9 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../SpaceHunter/matrixworker.h \
 		../SpaceHunter/gamemanager.h \
 		../SpaceHunter/styleworker.h \
-		../SpaceHunter/positionmanager.h ../SpaceHunter/main.cpp \
+		../SpaceHunter/positionmanager.h \
+		../SpaceHunter/maploader.h \
+		../SpaceHunter/thingloader.h ../SpaceHunter/main.cpp \
 		../SpaceHunter/mainwindow.cpp \
 		../SpaceHunter/render.cpp \
 		../SpaceHunter/worldbuilder.cpp \
@@ -151,7 +157,9 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../SpaceHunter/matrixworker.cpp \
 		../SpaceHunter/gamemanager.cpp \
 		../SpaceHunter/styleworker.cpp \
-		../SpaceHunter/positionmanager.cpp
+		../SpaceHunter/positionmanager.cpp \
+		../SpaceHunter/maploader.cpp \
+		../SpaceHunter/thingloader.cpp
 QMAKE_TARGET  = SpaceHunter
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = SpaceHunter
@@ -332,8 +340,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../SpaceHunter/resourses.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../SpaceHunter/mainwindow.h ../SpaceHunter/render.h ../SpaceHunter/worldbuilder.h ../SpaceHunter/objectscreator.h ../SpaceHunter/physicalobject.h ../SpaceHunter/movementcontroller.h ../SpaceHunter/matrixworker.h ../SpaceHunter/gamemanager.h ../SpaceHunter/styleworker.h ../SpaceHunter/positionmanager.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../SpaceHunter/main.cpp ../SpaceHunter/mainwindow.cpp ../SpaceHunter/render.cpp ../SpaceHunter/worldbuilder.cpp ../SpaceHunter/objectscreator.cpp ../SpaceHunter/movementcontroller.cpp ../SpaceHunter/matrixworker.cpp ../SpaceHunter/gamemanager.cpp ../SpaceHunter/styleworker.cpp ../SpaceHunter/positionmanager.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../SpaceHunter/mainwindow.h ../SpaceHunter/render.h ../SpaceHunter/worldbuilder.h ../SpaceHunter/objectscreator.h ../SpaceHunter/physicalobject.h ../SpaceHunter/movementcontroller.h ../SpaceHunter/matrixworker.h ../SpaceHunter/gamemanager.h ../SpaceHunter/styleworker.h ../SpaceHunter/positionmanager.h ../SpaceHunter/maploader.h ../SpaceHunter/thingloader.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../SpaceHunter/main.cpp ../SpaceHunter/mainwindow.cpp ../SpaceHunter/render.cpp ../SpaceHunter/worldbuilder.cpp ../SpaceHunter/objectscreator.cpp ../SpaceHunter/movementcontroller.cpp ../SpaceHunter/matrixworker.cpp ../SpaceHunter/gamemanager.cpp ../SpaceHunter/styleworker.cpp ../SpaceHunter/positionmanager.cpp ../SpaceHunter/maploader.cpp ../SpaceHunter/thingloader.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../SpaceHunter/mainwindow.ui $(DISTDIR)/
 
 
@@ -374,7 +382,9 @@ moc_mainwindow.cpp: ../SpaceHunter/render.h \
 		../SpaceHunter/matrixworker.h \
 		../SpaceHunter/objectscreator.h \
 		../SpaceHunter/gamemanager.h \
+		../SpaceHunter/maploader.h \
 		../SpaceHunter/styleworker.h \
+		../SpaceHunter/positionmanager.h \
 		../SpaceHunter/mainwindow.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/maxim/MY_PROGRAMMS/QTprojects/SpaceHunter/SpaceHunter -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../SpaceHunter/mainwindow.h -o moc_mainwindow.cpp
 
@@ -404,7 +414,9 @@ main.o: ../SpaceHunter/main.cpp ../SpaceHunter/mainwindow.h \
 		../SpaceHunter/matrixworker.h \
 		../SpaceHunter/objectscreator.h \
 		../SpaceHunter/gamemanager.h \
-		../SpaceHunter/styleworker.h
+		../SpaceHunter/maploader.h \
+		../SpaceHunter/styleworker.h \
+		../SpaceHunter/positionmanager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../SpaceHunter/main.cpp
 
 mainwindow.o: ../SpaceHunter/mainwindow.cpp ../SpaceHunter/mainwindow.h \
@@ -415,7 +427,9 @@ mainwindow.o: ../SpaceHunter/mainwindow.cpp ../SpaceHunter/mainwindow.h \
 		../SpaceHunter/matrixworker.h \
 		../SpaceHunter/objectscreator.h \
 		../SpaceHunter/gamemanager.h \
+		../SpaceHunter/maploader.h \
 		../SpaceHunter/styleworker.h \
+		../SpaceHunter/positionmanager.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../SpaceHunter/mainwindow.cpp
 
@@ -448,7 +462,8 @@ gamemanager.o: ../SpaceHunter/gamemanager.cpp ../SpaceHunter/gamemanager.h \
 		../SpaceHunter/movementcontroller.h \
 		../SpaceHunter/physicalobject.h \
 		../SpaceHunter/matrixworker.h \
-		../SpaceHunter/objectscreator.h
+		../SpaceHunter/objectscreator.h \
+		../SpaceHunter/maploader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gamemanager.o ../SpaceHunter/gamemanager.cpp
 
 styleworker.o: ../SpaceHunter/styleworker.cpp ../SpaceHunter/styleworker.h
@@ -456,6 +471,20 @@ styleworker.o: ../SpaceHunter/styleworker.cpp ../SpaceHunter/styleworker.h
 
 positionmanager.o: ../SpaceHunter/positionmanager.cpp ../SpaceHunter/positionmanager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o positionmanager.o ../SpaceHunter/positionmanager.cpp
+
+maploader.o: ../SpaceHunter/maploader.cpp ../SpaceHunter/maploader.h \
+		../SpaceHunter/worldbuilder.h \
+		../SpaceHunter/render.h \
+		../SpaceHunter/movementcontroller.h \
+		../SpaceHunter/physicalobject.h \
+		../SpaceHunter/matrixworker.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o maploader.o ../SpaceHunter/maploader.cpp
+
+thingloader.o: ../SpaceHunter/thingloader.cpp ../SpaceHunter/thingloader.h \
+		../SpaceHunter/objectscreator.h \
+		../SpaceHunter/render.h \
+		../SpaceHunter/physicalobject.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o thingloader.o ../SpaceHunter/thingloader.cpp
 
 qrc_resourses.o: qrc_resourses.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resourses.o qrc_resourses.cpp

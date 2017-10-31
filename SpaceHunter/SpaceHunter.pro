@@ -21,7 +21,9 @@ SOURCES += main.cpp\
     matrixworker.cpp \
     gamemanager.cpp \
     styleworker.cpp \
-    positionmanager.cpp
+    positionmanager.cpp \
+    maploader.cpp \
+    thingloader.cpp
 
 HEADERS  += mainwindow.h \
     render.h \
@@ -32,7 +34,9 @@ HEADERS  += mainwindow.h \
     matrixworker.h \
     gamemanager.h \
     styleworker.h \
-    positionmanager.h
+    positionmanager.h \
+    maploader.h \
+    thingloader.h
 
 FORMS    += mainwindow.ui
 

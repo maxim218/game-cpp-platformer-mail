@@ -28,6 +28,85 @@ ObjectsCreator::~ObjectsCreator(){
     }
 }
 
+// удаление объектов, помеченных на удаление
+void ObjectsCreator::deleteMarkedObjects() {
+    // получаем указатель на главного героя
+    physicalObject * hero = first->next;
+    // массив для хранения физических объектов
+    physicalObject arr[1500];
+    // длина массива
+    int arrCount = 0;
+
+    // указатель на физический объект после главного героя
+    q = hero->next;
+
+    // пока не дошли до конца списка
+    while(q != NULL) {
+        // если объект НЕ помечен на удаление
+        if(q->deleted == false) {
+            // создаём структуру
+            physicalObject obj;
+
+            // копируем в структуру свойства физического объекта
+            obj.xx = q->xx;
+            obj.yy = q->yy;
+            obj.ww = q->ww;
+            obj.hh = q->hh;
+            obj.acceleration = q->acceleration;
+            obj.speedX = q->speedX;
+            obj.speedY = q->speedY;
+            obj.type = q->type;
+            obj.maxLiveTime = q->maxLiveTime;
+            obj.nowLiveTime = q->nowLiveTime;
+            obj.deleted = q->deleted;
+
+            // добавляем физический объект в конец массива
+            arr[arrCount] = obj;
+            arrCount++;
+        }
+        // переходим на следующий элемент списка
+        q = q->next;
+    }
+
+    // удаляем все объекты из списка кроме first и hero
+    q = hero->next;
+    while(q != NULL) {
+        p = q;
+        q = q->next;
+        delete p;
+    }
+
+    // говорим, что hero - это последний элемент списка
+    last = hero;
+    last->next = NULL;
+
+    // пробегаемся по массиву объектов
+    for(int i = 0; i < arrCount; ++i) {
+        // получаем i-ый элемент массива
+        physicalObject obj = arr[i];
+        // добавляем элемент в список
+        physicalObject * element = addPhysicalObject(obj.xx, obj.yy, obj.ww, obj.hh, obj.acceleration, obj.speedX, obj.speedY);
+        // задаём дополнительные свойства элемента
+        element->type = obj.type;
+        element->maxLiveTime = obj.maxLiveTime;
+        element->nowLiveTime = obj.nowLiveTime;
+        element->deleted = obj.deleted;
+    }
+
+    // для хранения длины списка
+    long listSize = 0;
+
+    // считаем длину списка
+    q = first;
+    while(q != NULL) {
+        ++listSize;
+        q = q->next;
+    }
+
+    // выводим в консоль длину списка
+    qDebug() << "List size: " << listSize;
+}
+
 // метод для добавления физических объектов в конец списка
 physicalObject * ObjectsCreator::addPhysicalObject(int xx, int yy, int ww, int hh, int acceleration, int speedX, int speedY) {
     // создаём новый физический объект
@@ -40,6 +119,7 @@ physicalObject * ObjectsCreator::addPhysicalObject(int xx, int yy, int ww, int h
     q->acceleration = acceleration;
     q->speedX = speedX;
     q->speedY = speedY;
+    q->deleted = false;
     // если начального элемента списка не существует
     if(first == NULL){
         // создаём начальный элемент

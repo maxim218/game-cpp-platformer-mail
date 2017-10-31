@@ -182,13 +182,48 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     // событие при нажатии клавиши
 
-    // говорим, что ни одна клавиша не нажата
-    a = false;
-    w = false;
-    d = false;
+    // если игра идёт
+    if(game == true) {
+        // если нет паузы
+        if(pause == false) {
+            // говорим, что ни одна клавиша не нажата
+            a = false;
+            w = false;
+            d = false;
 
-    // ищем нажатую клавишу
-    if(event->key() == Qt::Key_A) a = true;
-    if(event->key() == Qt::Key_W) w = true;
-    if(event->key() == Qt::Key_D) d = true;
+            // ищем нажатую клавишу
+            if(event->key() == Qt::Key_A) a = true;
+            if(event->key() == Qt::Key_W) w = true;
+            if(event->key() == Qt::Key_D) d = true;
+        }
+    }
+}
+
+
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    // событие щелчка мышкой
+
+    // если игра идёт
+    if(game == true) {
+        // если нет паузы
+        if(pause == false) {
+            // получаем координаты миши относительно окна
+            int xm = event->x();
+            int ym = event->y();
+
+            // если щелчок был сделан по холсту
+            if(30 <= xm && xm <= 830) {
+                if(30 <= ym && ym <= 630) {
+
+                    // получаем координаты мыши относительно холста
+                    xm -= 30;
+                    ym -= 30;
+
+                    // вызываем метод стрельбы
+                    gameManager->fire(xm, ym);
+                }
+            }
+        }
+    }
 }
