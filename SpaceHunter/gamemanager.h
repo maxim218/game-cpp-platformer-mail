@@ -1,14 +1,17 @@
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
 
+#include <math.h>
 #include "render.h"
 #include "worldbuilder.h"
 #include "objectscreator.h"
 #include "movementcontroller.h"
 #include "physicalobject.h"
 #include "QKeyEvent"
+
+#include "fileloader.h"
+#include "factoryoffileloaders.h"
 #include "maploader.h"
-#include <math.h>
 #include "thingloader.h"
 
 // класс для управления процессом игры

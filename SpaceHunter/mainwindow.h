@@ -16,6 +16,8 @@
 #include <QInputDialog>
 #include "QKeyEvent"
 #include <QMouseEvent>
+#include "fileloader.h"
+#include "factoryoffileloaders.h"
 
 namespace Ui {
 class MainWindow;

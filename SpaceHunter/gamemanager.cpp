@@ -259,6 +259,9 @@ void GameManager::buildPerimetrWalls() {
 
 // создания уровня под определёным номером
 void GameManager::buildLevel(int levelNumber) {
+    // фабрика для получения загрузчиков из файлов
+    FactoryOfFileLoaders factory;
+
     // переводим номер уровня в строку
     QString numberString;
     numberString.setNum(levelNumber);
@@ -269,14 +272,17 @@ void GameManager::buildLevel(int levelNumber) {
 
     // строим стены по периметру
     buildPerimetrWalls();
+
     // загружаем карту из файла
-    MapLoader mapLoader(mapString, worldBuilder);
+    FileLoader * mapLoader = factory.getMapLoader();
+    mapLoader->makeLoadOfMap(mapString, worldBuilder);
 
     // создаём главного героя
     hero = addObject(400, 320, 40, 40, 1, 0, 0, "hero");
     hero->type = "hero";
 
     // загружаем монстров и другие объекты из файла
-    ThingLoader thingLoader(thingString, objectsCreator);
+    FileLoader * thingLoader = factory.getThingLoader();
+    thingLoader->makeLoadOfThings(thingString, objectsCreator);
 }
 
