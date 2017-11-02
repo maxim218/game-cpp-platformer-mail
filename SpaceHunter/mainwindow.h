@@ -31,6 +31,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
+
     void mousePressEvent(QMouseEvent *event);
     void gameOverFunction();
     void startGameFunction(int level);

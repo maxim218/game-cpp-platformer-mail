@@ -82,7 +82,6 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::repeatingFunction()
 {
     // функция, которая вызывается в цикле
-
     // если идёт игра
     if(game == true) {
         // если нет паузы
@@ -215,20 +214,25 @@ void MainWindow::gameOverFunction() {
 }
 
 
-void MainWindow::keyPressEvent(QKeyEvent *event)
+void MainWindow::keyReleaseEvent(QKeyEvent *event)
 {
-    // событие при нажатии клавиши
-
     // если игра идёт
     if(game == true) {
         // если нет паузы
         if(pause == false) {
-            // говорим, что ни одна клавиша не нажата
-            a = false;
-            w = false;
-            d = false;
+            if(event->key() == Qt::Key_A) a = false;
+            if(event->key() == Qt::Key_W) w = false;
+            if(event->key() == Qt::Key_D) d = false;
+        }
+    }
+}
 
-            // ищем нажатую клавишу
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    // если игра идёт
+    if(game == true) {
+        // если нет паузы
+        if(pause == false) {
             if(event->key() == Qt::Key_A) a = true;
             if(event->key() == Qt::Key_W) w = true;
             if(event->key() == Qt::Key_D) d = true;

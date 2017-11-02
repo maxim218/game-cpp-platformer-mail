@@ -152,7 +152,7 @@ void ObjectsCreator::printOneObject(physicalObject * q, int dx, int dy) {
 
         // если объект - герой
         if(q->type == "hero") {
-        renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 2);
+            renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 2);
         }
 
         // если объект - пуля
