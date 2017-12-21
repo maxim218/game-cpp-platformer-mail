@@ -278,3 +278,19 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         }
     }
 }
+
+void MainWindow::on_b2_clicked()
+{
+    QMessageBox msgBox(QMessageBox::Information,"SpaceHunter","Авторы:\nКолотовкин Максим\nИкчурин Артём\nУмутбаев Баязит",QMessageBox::Ok);
+    msgBox.exec();
+}
+
+void MainWindow::on_b3_clicked()
+{
+    QString aboutGame = "Описание игры:\n";
+    aboutGame += "Космонавт попал на неизвестную планету.\n";
+    aboutGame += "Со всех сторон на него начинают нападать монстры.\n";
+    aboutGame += "Вам необходимо помочь космонавту убить всех монстров и улететь с планеты.";
+    QMessageBox msgBox(QMessageBox::Information,"SpaceHunter",aboutGame,QMessageBox::Ok);
+    msgBox.exec();
+}
