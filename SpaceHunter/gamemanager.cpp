@@ -185,7 +185,7 @@ int GameManager::gameProcess(bool &w, bool &a, bool &d){
             // если герой касается монстра
             if(hitTest(hero, q) == true) {
                 // поражение
-               gameResult = -1;
+                gameResult = -1;
             }
 
             // если у монстра кончились жизни
