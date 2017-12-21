@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DrawPicture</title>
+    <style>
+        body {
+            background-color: #1ab2ff;
+            padding: 30px;
+        }
+
+        #can {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>DrawPicture</h1>
+<hr>
+<br>
+<br>
+
+<input type = 'color' id = 'ccc' name = 'ccc' oninput = 'setColorDrawing(this)'>
+<select size = "1" id = "cb1">
+    <option value = "1">Прямоугольник&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+    <option value = "2">Окружность</option>
+</select>
+<span style = "padding-left: 50px"></span>
+<button onclick = "clearAll();">Очистить</button>
+<span style = "padding-left: 50px"></span>
+<select size = "1" id = "cb2">
+    <option value = "10">Герой и монстры&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+    <option value = "20">Клетка</option>
+</select>
+<span style = "padding-left: 50px"></span>
+<button onclick = "getResult();">Получить результат</button>
+<span style = "padding-left: 50px"></span>
+<textarea id = "tttt"></textarea>
+<br>
+<br>
+<br>
+<br>
+
+<canvas width = '400px' height = '400px' id='can'></canvas>
+
+<script src = "code.js"></script>
+
+</body>
+</html>

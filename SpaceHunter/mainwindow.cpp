@@ -50,6 +50,8 @@ MainWindow::MainWindow(QWidget *parent) :
     // говорим, что у картинки с названием игры нет фона
     ui->titleLabel->setStyleSheet("background: none;");
 
+    ui->b2->setText("Об авторах");
+
     // создаём объект для изменения стилей элементов
     StyleWorker styleWorker;
     // задаём стили кнопок главного меню
@@ -105,8 +107,16 @@ void MainWindow::repeatingFunction()
                     gameOverFunction();
                     // уровень игры
                     gameLevel++;
-                    // начало игры
-                    startGameFunction(gameLevel);
+                    if(gameLevel != 4) {
+                        // начало игры
+                        startGameFunction(gameLevel);
+                    } else {
+                        // уровень игры
+                        gameLevel = 1;
+                        // собщение: игра пройдена
+                        QMessageBox msgBox(QMessageBox::Information,"SpaceHunter","Поздравляем!\nВы прошли игру!",QMessageBox::Ok);
+                        msgBox.exec();
+                    }
                 }
             }
         }

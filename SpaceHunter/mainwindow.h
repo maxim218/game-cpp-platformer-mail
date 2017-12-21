@@ -18,6 +18,7 @@
 #include <QMouseEvent>
 #include "fileloader.h"
 #include "factoryoffileloaders.h"
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;

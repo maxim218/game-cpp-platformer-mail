@@ -36,7 +36,8 @@ void WorldBuilder::printMap(int dx, int dy){
             // если данная клетка является стеной
             if(m->getValue(i, j) == 1){
                 // рисуем стену
-                renderObject->drawRectange(j * size, i * size, size, size, 2, 1);
+                // renderObject->drawRectange(j * size, i * size, size, size, 2, 1);
+                renderObject->drawKletka(j * size + 10, i * size + 20);
             }            
         }
     }

@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = SpaceHunter1.0.0
-DISTDIR = /home/maxim/MY_PROGRAMMS/QTprojects/SpaceHunter/build-SpaceHunter-Desktop-Debug/.tmp/SpaceHunter1.0.0
+DISTDIR = /home/maxim/MyProjectsProgramming/GameMailQt/game-cpp-platformer-mail/build-SpaceHunter-Desktop-Debug/.tmp/SpaceHunter1.0.0
 LINK          = g++
 LFLAGS        = -m64
 LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -366,6 +366,7 @@ qrc_resourses.cpp: ../SpaceHunter/resourses.qrc \
 		../SpaceHunter/gameFonOK.jpg \
 		../SpaceHunter/space.jpg \
 		../SpaceHunter/metal.jpeg \
+		../SpaceHunter/fonPixel.jpg \
 		../SpaceHunter/titlePicture.png \
 		../SpaceHunter/box.jpg
 	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name resourses ../SpaceHunter/resourses.qrc -o qrc_resourses.cpp
@@ -387,7 +388,7 @@ moc_mainwindow.cpp: ../SpaceHunter/render.h \
 		../SpaceHunter/styleworker.h \
 		../SpaceHunter/positionmanager.h \
 		../SpaceHunter/mainwindow.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/maxim/MY_PROGRAMMS/QTprojects/SpaceHunter/SpaceHunter -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../SpaceHunter/mainwindow.h -o moc_mainwindow.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/maxim/MyProjectsProgramming/GameMailQt/game-cpp-platformer-mail/SpaceHunter -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../SpaceHunter/mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:

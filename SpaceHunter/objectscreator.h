@@ -15,6 +15,8 @@ class ObjectsCreator
         Render * renderObject;
         // метод для отрисовки одного физического объекта
         void printOneObject(physicalObject * q, int dx, int dy);
+        // режим отладки
+        bool debugMode;
 
     public:
         // конструктор для инициализации объекта для рисования, инициализации указателей на физические объекты и создания начального элемента списка

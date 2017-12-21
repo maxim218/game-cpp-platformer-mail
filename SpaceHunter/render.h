@@ -31,6 +31,16 @@ class Render
         void clearAll();
         // задать сдвиги по осям
         void setDelta(int dxx, int dyy);
+        // метод для рисования героя
+        void drawHero(int x_param, int y_param);
+        // методы для рисования монстров
+        void drawMonsterTwo(int x_param, int y_param);
+        void drawMonsterThree(int x_param, int y_param);
+        void drawMonsterFour(int x_param, int y_param);
+        // метод для рисования клетки
+        void drawKletka(int x_param, int y_param);
+        // рисование конечной точки игры
+        void drawFinish(int x_param, int y_param);
 };
 
 #endif // RENDER_H

@@ -139,6 +139,9 @@ physicalObject * ObjectsCreator::addPhysicalObject(int xx, int yy, int ww, int h
 
 // метод для вывода одного физического объекта на экран
 void ObjectsCreator::printOneObject(physicalObject * q, int dx, int dy) {
+    // режим отладки
+    debugMode = false;
+
     // задаём сдвиг
     renderObject->setDelta(dx, dy);
     // получаем свойства физического объекта
@@ -152,7 +155,10 @@ void ObjectsCreator::printOneObject(physicalObject * q, int dx, int dy) {
 
         // если объект - герой
         if(q->type == "hero") {
-            renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 2);
+            if(debugMode) {
+                renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 2);
+            }
+            renderObject->drawHero(xx,yy);
         }
 
         // если объект - пуля
@@ -162,22 +168,34 @@ void ObjectsCreator::printOneObject(physicalObject * q, int dx, int dy) {
 
         // если объект - монстр 2
         if(q->type == "thing2") {
-            renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 4);
+            if(debugMode) {
+                renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 4);
+            }
+            renderObject->drawMonsterTwo(xx, yy);
         }
 
         // если объект - монстр 3
         if(q->type == "thing3") {
-            renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 5);
+            if(debugMode) {
+                renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 5);
+            }
+            renderObject->drawMonsterThree(xx,yy);
         }
 
         // если объект - монстр 4
         if(q->type == "thing4") {
-            renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 6);
+            if(debugMode) {
+                renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 6);
+            }
+            renderObject->drawMonsterFour(xx,yy);
         }
 
         // если объект - конец уровня
         if(q->type == "thing7") {
-            renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 9);
+            if(debugMode) {
+                renderObject->drawRectange(xx - ww/2, yy - hh, ww, hh, 2, 9);
+            }
+            renderObject->drawFinish(xx,yy);
         }
     }
 }
